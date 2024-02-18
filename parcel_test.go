@@ -57,7 +57,7 @@ func TestAddGetDelete(t *testing.T) {
 	assert.NoError(t, err)
 	// проверьте, что посылку больше нельзя получить из БД
 	_, err = store.Get(id)
-	assert.Error(t, err)
+	require.ErrorIs(t, err, sql.ErrNoRows)
 }
 
 // TestSetAddress проверяет обновление адреса
